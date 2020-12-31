@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.h                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayagoumi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 07:52:50 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:24:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/04/02 05:12:38 by ayagoumi          #+#    #+#             */
+/*   Updated: 2019/04/21 23:54:48 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_H
-#define UPDATE_H
-void			update(t_doom *d);
-t_hit			find_intersection_point(t_player *p);
-#endif
+#include "libft.h"
+
+char	*ft_strnew(size_t size)
+{
+	char *str;
+
+	str = (char*)malloc((size + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	else
+		ft_memset(str, '\0', size + 1);
+	return (str);
+}

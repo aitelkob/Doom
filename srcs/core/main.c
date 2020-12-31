@@ -6,11 +6,11 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 05:19:40 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/30 09:14:33 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:27:53 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/headers.h"
+#include "../../includes/headers.h"
 
 int map[]=
 {

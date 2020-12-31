@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:09:02 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/29 19:09:48 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2020/12/31 16:08:08 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 #include <pthread.h>
 #include <stdio.h>
 #include "define.h"
-#include "../SDL/SDL2.framework/Headers/SDL.h"
-#include "../SDL/SDL2_image.framework/Headers/SDL_image.h"
-#include "./structers.h"
+# include "SDL.h"
+# include "SDL_ttf.h"
+# include "SDL_image.h"
+#include "structers.h"
 #include "../srcs/algebr_lin/alg.h"
 #include "setup.h"
-#include "./process_input.h"
-#include "./update.h"
+#include "process_input.h"
+#include "update.h"
 #include "render.h"
 #endif

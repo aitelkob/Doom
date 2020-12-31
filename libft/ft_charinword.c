@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.h                                           :+:      :+:    :+:   */
+/*   ft_charinword.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzaboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 07:52:50 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:24:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/04/13 15:27:54 by mzaboub           #+#    #+#             */
+/*   Updated: 2019/05/07 13:57:11 by mzaboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_H
-#define UPDATE_H
-void			update(t_doom *d);
-t_hit			find_intersection_point(t_player *p);
-#endif
+#include "libft.h"
+
+size_t	ft_charinword(char *str, size_t i, char stop)
+{
+	size_t	begin;
+
+	begin = i;
+	while (str[i] != stop && str[i])
+		i++;
+	return (i - begin);
+}

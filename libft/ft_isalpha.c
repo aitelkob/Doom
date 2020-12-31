@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.h                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayagoumi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 07:52:50 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:24:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/03/30 21:20:16 by ayagoumi          #+#    #+#             */
+/*   Updated: 2019/04/01 02:20:36 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_H
-#define UPDATE_H
-void			update(t_doom *d);
-t_hit			find_intersection_point(t_player *p);
-#endif
+#include "libft.h"
+
+int	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}

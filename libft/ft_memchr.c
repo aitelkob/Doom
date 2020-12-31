@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.h                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayagoumi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 07:52:50 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:24:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/03/28 21:37:17 by ayagoumi          #+#    #+#             */
+/*   Updated: 2019/04/22 18:11:39 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_H
-#define UPDATE_H
-void			update(t_doom *d);
-t_hit			find_intersection_point(t_player *p);
-#endif
+#include "libft.h"
+
+void	*ft_memchr(const void *str, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*s;
+
+	i = 0;
+	s = (unsigned char*)str;
+	while (i < n)
+	{
+		if (s[i] == (unsigned char)c)
+			return (s + i);
+		i++;
+	}
+	return (NULL);
+}

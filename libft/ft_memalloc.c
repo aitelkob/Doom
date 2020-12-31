@@ -1,17 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.h                                           :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayagoumi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 07:52:50 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:24:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/04/02 04:37:22 by ayagoumi          #+#    #+#             */
+/*   Updated: 2019/04/22 18:04:14 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_H
-#define UPDATE_H
-void			update(t_doom *d);
-t_hit			find_intersection_point(t_player *p);
-#endif
+#include "libft.h"
+
+void	*ft_memalloc(size_t size)
+{
+	char	*str;
+
+	str = (char*)malloc(sizeof(char) * size);
+	if (str == NULL)
+		return (NULL);
+	ft_bzero(str, size);
+	return (str);
+}
