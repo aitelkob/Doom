@@ -6,7 +6,7 @@
 #    By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2020/12/31 16:30:37 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/01 09:58:11 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRC             += render/main_render.c
 SRC             += setup/main_setup.c
 SRC             += update/main_update.c
 SRC             += update/main_input.c
-SRC             += update/main_input.c
+SRC             += update/find_intersection.c
 SRC             += render/draw_2Dmap.c
 
 #############################################
