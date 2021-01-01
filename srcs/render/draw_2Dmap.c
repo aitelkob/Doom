@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:02:07 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/30 09:16:14 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/01 12:01:48 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void				draw_minimap(t_doom *d)
 	SDL_Rect	srcrect;
 	int			i;
 	int			j;
-	t_hit		inter;
 
 	i = 0;
 	srcrect.h = BLOCK_SIZE;
@@ -51,8 +50,5 @@ void				draw_minimap(t_doom *d)
 	srcrect.y = d->player.pos.y - 5;
 	SDL_SetRenderDrawColor(d->sdl.ren_ptr, 55, 20, 200, 0);
 	SDL_RenderFillRect(d->sdl.ren_ptr, &srcrect);
-	inter = find_intersection_point(&d->player);
-	SDL_RenderDrawLine(d->sdl.ren_ptr, d->player.pos.x, d->player.pos.y, 
-		inter.p.x, 
-		inter.p.y);
+	find_intersection_point(&d->player, &d->sdl);
 }

@@ -6,7 +6,7 @@
 #    By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/01 09:58:11 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/01 11:24:35 by aeddaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # Executable / Libraries.
 
 RM              = rm -rf
-SDL             = libsdl2.a
+SDL             = libSDL2.a
 TTF             = libsdl2_ttf.a
 IMG				= libSDL2_image.a
 FT              = libft.a
@@ -70,10 +70,10 @@ SRC             += render/draw_2Dmap.c
 UNAME := $(shell uname -s)
 
 ifeq ($(UNAME), Darwin)
-	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.12_1/lib
+	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.14_1/lib
 	LTTFDIR     = $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
 	LIMGDIR 	= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/lib
-	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.12_1/include/SDL2
+	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.14_1/include/SDL2
 	INCSDIR     += $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 	INCSDIR		+= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/include/SDL2
 else
