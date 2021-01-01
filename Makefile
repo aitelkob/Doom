@@ -6,7 +6,7 @@
 #    By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2020/12/27 10:55:48 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/01 09:58:11 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,16 +35,37 @@ WHITE        	:= $(shell tput -Txterm setaf 7)
 RESET         	:= $(shell tput -Txterm setaf 9)
 SPACE			:= $(shell tput -Txterm cup 20  50)
 ############################
-INCSDIR 		:= inc
+INCSDIR 		:= includes
 INCSDIR 		+= $(LFTDIR)
 ############################
 SRCSDIR 		= srcs
 OBJSDIR 		= objs
 ############################
-INCS 			:= inc/wolf_3d.h
-INCS 			+= libft/libft.h
+CHILDDIR        := core
+CHILDDIR		+= algebr_lin
+CHILDDIR        += render
+CHILDDIR        += setup
+CHILDDIR        += update
+###########################
+INCS            := includes/setup.h
+INCS            += includes/render.h
+INCS            += includes/process_input.h
+INCS            += includes/headers.h
+INCS            += includes/define.h
+INCS            += includes/structers.h
+INCS            += includes/update.h
+INCS			+= srcs/algebr_lin/alg.h
 ############################################
-SRC 			:= main.c
+SRC             := core/main.c
+SRC             += algebr_lin/vect3_utilfun.c
+SRC             += algebr_lin/vect3_utilfunc.c
+SRC             += render/main_render.c
+SRC             += setup/main_setup.c
+SRC             += update/main_update.c
+SRC             += update/main_input.c
+SRC             += update/find_intersection.c
+SRC             += render/draw_2Dmap.c
+
 #############################################
 UNAME := $(shell uname -s)
 
@@ -67,10 +88,6 @@ else
 	INCSDIR	  = $(LUINCS)/SDL2 
 endif
 ########################################3Linked libraries at compile time.
-#LIBS            := -framework SDL2 -F ./SDL/ 
-#LIBS            += -framework SDL2_image -F ./SDL/
-#LIBS			+= -framework SDL2_ttf -F ./SDL/
-#LIBS			+= -rpath @loader_path/SDL
 LIBS            := -L$(LSDLDIR) -lSDL2
 LIBS            += -L$(LTTFDIR) -lSDL2_ttf
 LIBS			+= -L$(LIMGDIR) -lSDL2_image
@@ -83,42 +100,28 @@ LSDL             = $(LSDLDIR)/$(SDL)
 LTTF             = $(LTTFDIR)/$(TTF)
 LIMG			 = $(LIMGDIR)/$(IMG)
 D_SRCS           = $(addsuffix /, $(SRCSDIR))
+DI_SRCS			 = $(foreach dir,$(CHILDDIR),$(D_SRCS)$(dir))
 D_OBJS           = $(addsuffix /, $(OBJSDIR))
 C_OBJS           = $(addprefix $(D_OBJS),  $(SRC:.c=.o))
-	C_INCS           = $(foreach include, $(INCSDIR), -I$(include))
-	CC              = gcc
+C_INCS           = $(foreach include, $(INCSDIR), -I$(include))
+C_CHILDDIR       = $(foreach dir, $(CHILDDIR),$(D_OBJS)$(dir))
+CC              = gcc
 
 # Compilation flags.
 
 CFLAGS          = $(C_INCS) -Wall -Wextra -Werror
 #----------------->>>>>>>>>>>>>>>>START<<<<<<<<<<<<<-------------------#
+
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(PURPLE)**********>>>Compiling : $(RESET) $(LIGHTPURPLE)" $<
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-
-all:$(OBJSDIR) $(C_OBJS) $(NAME)
+all: $(OBJSDIR) $(C_CHILDDIR) $(NAME)
 
 
 $(NAME):  $(LFT)  $(LSDL) $(LIMG) $(LTTF)  $(C_OBJS)
 	@echo "$(RED)\n***********>>>Building : $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
-	@echo "$(GREEN)***   successfully compiled   ***\n$(RESET)"
-	@echo " ----------------------------------------------------"
-	@echo "|$(RED)                       Wolf-3D                 $(RESET)     |"
-	@echo "|----------------------------------------------------|"
-	@echo "| $(LIGHTPURPLE)Options:$(RESET)                                           |"
-	@echo "|                                                    |"
-	@echo "| L:$(YELLOW)Show Light$(RESET)              | K:$(YELLOW)Dim Light$(RESET)            |"
-	@echo "|                                                    |"
-	@echo "| +:$(YELLOW)Up The darkness$(RESET)         |-:$(YELLOW)Dim darkness$(RESET)          |"
-	@echo "|                                                    |"
-	@echo "| w,d,s,a: $(YELLOW)Mouvement$(RESET)                                 |"
-	@echo "|                                                    |"
-	@echo "| ->: <-: $(YELLOW)Up key: Down Key:$(RESET)                          |"
-	@echo "|                                                    |"
-	@echo "| ESC: $(YELLOW)Quit$(RESET)                                          |"
-	@echo " ----------------------------------------------------"
 
 print-%  : ; @echo $* = $($*)
 
@@ -130,7 +133,12 @@ $(LFT):
 ### creating files for object.o
 $(LSDL):
 	@echo "$(GREEN)***   Installing library sdl2   ...  ***\n$(RESET)"
-	@brew install sdl2 > /dev/null 2>&1;
+	@if [$(UNAME) = Darwin]; then
+	brew install sdl2 > /dev/null 2>&1;
+	elif [! -d "$(SDL)"]; then
+	sudo apt install libsdl2-dev libsdl2-2.0-0 -y;
+	fi
+
 
 $(LTTF):
 	@echo "$(GREEN)***   Installing library sdl2_ttf   ...  ***\n$(RESET)"
@@ -141,8 +149,9 @@ $(LIMG):
 	@brew install sdl2_image > /dev/null 2>&1;
 $(OBJSDIR):
 	@mkdir -p $(OBJSDIR)
-	##### creating space
-	# Deleting all .o files.
+
+$(C_CHILDDIR):
+	@mkdir -p $(C_CHILDDIR)
 
 clean:
 	@make -sC $(LFTDIR) clean
