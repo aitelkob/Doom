@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_update.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:13:36 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/01 12:39:07 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/02 16:04:11 by farwila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		update(t_doom *d)
 	}
 	if (d->upt.input.move_right)
 	{
-		d->player.pa += 0.001;
+		d->player.pa += 0.01;
 		if (d->player.pa > 2 * PI)
 			d->player.pa -= 2 *  PI;
 		d->player.delta.x = cos(d->player.pa) * 5;
@@ -34,7 +34,7 @@ void		update(t_doom *d)
 	}
 	if (d->upt.input.move_left)
 	{
-		d->player.pa -= 0.001;
+		d->player.pa -= 0.01;
 		if (d->player.pa < 0)
 			d->player.pa += 2 *  PI;
 		d->player.delta.x = cos(d->player.pa) * 5;

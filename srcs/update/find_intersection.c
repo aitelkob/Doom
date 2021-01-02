@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_intersection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:07:46 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/01 12:42:43 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/02 17:31:29 by farwila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,13 @@ t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
 	double	ra;
 	t_hit	vert;
 	t_hit	hori;
+	int		line_h;
+	int		line_o;
+	double	dist;
 
 	r = 0;
 	ra = p->pa - 30 * DR;
+	double ca;
 	if (ra < 0)
 		ra += 2 * PI;
 	if (ra > 2 * PI)
@@ -126,9 +130,32 @@ t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
 		vert_intersection(p, &vert, ra);
 		hori_intersection(p, &hori, ra);
 		if (vert.dist < hori.dist)
+		{
+			dist = vert.dist;
 			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, vert.p.x, vert.p.y);
+		}
 		else
+		{
+			dist = hori.dist;
 			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, hori.p.x, hori.p.y);
+		}
+		// 3d walls rendering
+		ca = p->pa - ra;
+		if (ca < 0)
+			ca += 2 * PI;
+		if (ca > 2 * PI)
+			ca -= 2 * PI;
+		line_h = (BLOCK_SIZE * H) / (dist * cos(ca));
+		if (line_h >= H)
+			line_h = H - 1;
+		line_o = H / 2 - line_h / 2;
+		int x;
+		x = 0;
+		while (x < 14)
+		{
+			SDL_RenderDrawLine(sdl->ren_ptr, x + (r * 14) + W, line_o, x + (r * 14) + W, line_o + line_h);
+			x++;
+		}
 		ra += DR;
 		r++;
 		if (ra < 0)

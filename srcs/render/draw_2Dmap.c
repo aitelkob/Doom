@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2Dmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:02:07 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/01 12:01:48 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/02 16:18:24 by farwila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void				draw_minimap(t_doom *d)
 	i = 0;
 	srcrect.h = BLOCK_SIZE;
 	srcrect.w = BLOCK_SIZE;
-	while (i < 15)
+	while (i < 14)
 	{
 		j = 0;
-		while (j < 15)
+		while (j < 14)
 		{
 			if (i < 15 && j < 15 && map[i + 14 * j])
 			{

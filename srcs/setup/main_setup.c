@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:52:53 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/01 11:43:13 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/02 16:09:53 by farwila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void			init_sdl(t_sdl *sdl)
 	sdl->win_ptr = SDL_CreateWindow("Doom Nukem 3D",
 	SDL_WINDOWPOS_CENTERED,
 	SDL_WINDOWPOS_CENTERED,
-	W, H, SDL_WINDOW_SHOWN);
+	W * 2, H, SDL_WINDOW_SHOWN);
 	sdl->ren_ptr = SDL_CreateRenderer(sdl->win_ptr, -1, 0);
 	sdl->tex_ptr = SDL_CreateTexture(sdl->ren_ptr, SDL_PIXELFORMAT_ARGB8888,
 	SDL_TEXTUREACCESS_STREAMING, W, H);
