@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_intersection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:07:46 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/02 17:31:29 by farwila          ###   ########.fr       */
+/*   Updated: 2021/01/03 10:46:40 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,17 @@ t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
 	int		line_h;
 	int		line_o;
 	double	dist;
+	double 	ca;
+	double	inc;
 
 	r = 0;
 	ra = p->pa - 30 * DR;
-	double ca;
 	if (ra < 0)
 		ra += 2 * PI;
 	if (ra > 2 * PI)
 		ra -= 2 * PI;
-	while (r < 60)
+	inc = 60 * DR / W;
+	while (r < W)
 	{
 		vert_intersection(p, &vert, ra);
 		hori_intersection(p, &hori, ra);
@@ -149,14 +151,8 @@ t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
 		if (line_h >= H)
 			line_h = H - 1;
 		line_o = H / 2 - line_h / 2;
-		int x;
-		x = 0;
-		while (x < 14)
-		{
-			SDL_RenderDrawLine(sdl->ren_ptr, x + (r * 14) + W, line_o, x + (r * 14) + W, line_o + line_h);
-			x++;
-		}
-		ra += DR;
+		SDL_RenderDrawLine(sdl->ren_ptr, r + W, line_o, r + W, line_o + line_h);
+		ra += inc;
 		r++;
 		if (ra < 0)
 			ra += 2 * PI;
