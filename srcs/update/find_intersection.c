@@ -6,11 +6,11 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:07:46 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 10:56:43 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/03 10:46:40 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "../../includes/headers.h"
 
 extern int map[];
 

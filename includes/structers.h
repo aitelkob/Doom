@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:11:47 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/30 09:04:18 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/03 12:06:41 by yoouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ typedef struct		s_update
 	char			*key_table;
 }					t_update;
 
+typedef	struct		s_tex
+{
+	SDL_Surface	*texture;
+}					t_tex;
 
 
 typedef struct		s_doom
@@ -85,6 +89,7 @@ typedef struct		s_doom
 	t_render		rend;
 	t_update		upt;
 	t_player		player;
+	t_tex			tex;
 }					t_doom;
 
 
