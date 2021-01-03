@@ -6,11 +6,11 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 07:30:18 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/30 07:33:25 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/03 11:10:56 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/headers.h"
+#include "headers.h"
 
 static void			handle_keys(t_update *d)
 {

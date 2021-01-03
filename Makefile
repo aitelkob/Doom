@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+         #
+#    By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/01 11:24:35 by aeddaqqa         ###   ########.fr        #
+#    Updated: 2021/01/03 11:13:13 by aeddaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ INCS            += includes/update.h
 INCS			+= srcs/algebr_lin/alg.h
 ############################################
 SRC             := core/main.c
+SRC             += core/find_intersection.c
 SRC             += algebr_lin/vect3_utilfun.c
 SRC             += algebr_lin/vect3_utilfunc.c
 SRC             += render/main_render.c
 SRC             += setup/main_setup.c
 SRC             += update/main_update.c
 SRC             += update/main_input.c
-SRC             += update/find_intersection.c
 SRC             += render/draw_2Dmap.c
 
 #############################################
@@ -88,17 +88,17 @@ else
 	INCSDIR	  = $(LUINCS)/SDL2 
 endif
 ########################################3Linked libraries at compile time.
-LIBS            := -L$(LSDLDIR) -lSDL2
-LIBS            += -L$(LTTFDIR) -lSDL2_ttf
+LIBS			:= -L$(LSDLDIR) -lSDL2
+LIBS			+= -L$(LTTFDIR) -lSDL2_ttf
 LIBS			+= -L$(LIMGDIR) -lSDL2_image
-LIBS            += -L$(LFTDIR) -lft
-LIBS            += -lm
+LIBS			+= -L$(LFTDIR) -lft
+LIBS			+= -lm
 LIBS			+= -lz
-LTTF             = $(LTTFDIR)/$(TTF)
-LFT              = $(LFTDIR)/$(FT)
-LSDL             = $(LSDLDIR)/$(SDL)
-LTTF             = $(LTTFDIR)/$(TTF)
-LIMG			 = $(LIMGDIR)/$(IMG)
+LTTF			= $(LTTFDIR)/$(TTF)
+LFT				= $(LFTDIR)/$(FT)
+LSDL			= $(LSDLDIR)/$(SDL)
+LTTF			= $(LTTFDIR)/$(TTF)
+LIMG			= $(LIMGDIR)/$(IMG)
 D_SRCS           = $(addsuffix /, $(SRCSDIR))
 DI_SRCS			 = $(foreach dir,$(CHILDDIR),$(D_SRCS)$(dir))
 D_OBJS           = $(addsuffix /, $(OBJSDIR))

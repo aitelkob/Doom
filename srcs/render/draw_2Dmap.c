@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2Dmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:02:07 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/02 16:18:24 by farwila          ###   ########.fr       */
+/*   Updated: 2021/01/03 11:11:16 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/headers.h"
+#include "headers.h"
 
 
 extern int map[];
@@ -50,5 +50,4 @@ void				draw_minimap(t_doom *d)
 	srcrect.y = d->player.pos.y - 5;
 	SDL_SetRenderDrawColor(d->sdl.ren_ptr, 55, 20, 200, 0);
 	SDL_RenderFillRect(d->sdl.ren_ptr, &srcrect);
-	find_intersection_point(&d->player, &d->sdl);
 }
