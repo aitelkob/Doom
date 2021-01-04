@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:11:47 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/30 09:04:18 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/03 16:05:57 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ typedef struct		s_vec3
 }					t_vect3;
 
 typedef t_vect3 	t_point;
+
+typedef	struct		s_tex
+{
+
+}					t_tex;
 
 typedef struct		s_input
 {
@@ -47,6 +52,12 @@ typedef struct		s_sdl
 	SDL_Texture		*tex_ptr;
 	SDL_Renderer	*ren_ptr;
 	SDL_Surface		*sur_ptr;
+	SDL_Surface		*Wall;
+	SDL_Surface		*Sky;
+	SDL_Surface		*Floor;
+	unsigned int	*Wall_pixels;
+	unsigned int	*Sky_pixels;
+	unsigned int	*Floor_pixels;
 }					t_sdl;
 
 typedef struct		s_player

@@ -6,7 +6,7 @@
 #    By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/03 11:13:13 by aeddaqqa         ###   ########.fr        #
+#    Updated: 2021/01/03 17:12:10 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,15 +65,15 @@ SRC             += setup/main_setup.c
 SRC             += update/main_update.c
 SRC             += update/main_input.c
 SRC             += render/draw_2Dmap.c
-
+SRC				+= setup/load_tex.c
 #############################################
 UNAME := $(shell uname -s)
 
 ifeq ($(UNAME), Darwin)
-	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.14_1/lib
+	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.12_1/lib
 	LTTFDIR     = $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
 	LIMGDIR 	= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/lib
-	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.14_1/include/SDL2
+	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.12_1/include/SDL2
 	INCSDIR     += $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 	INCSDIR		+= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/include/SDL2
 else
