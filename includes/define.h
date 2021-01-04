@@ -6,16 +6,16 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:40:21 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 15:58:02 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:16:46 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 #define DEFINE_H
 
-# define WALL  "resources/.png"
-# define FLOOR "resources/.png"
-# define SKY   "resources/.png"
+# define WALL  "resources/frame.png"
+# define FLOOR "resources/bark.png"
+# define SKY   "resources/sky1.png"
 
 
 #define W 896
