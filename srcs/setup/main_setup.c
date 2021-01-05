@@ -6,7 +6,7 @@
 /*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:52:53 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 17:11:23 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/03 12:00:47 by yoouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void			setup(t_doom *d)
 	init(d);
 	d->rend.data = malloc(4 * W * H);
 	init_sdl(&d->sdl);
-	////
-	load_texture(d);
 	d->upt.input.game = true;
 	init_player(&d->player);
 }

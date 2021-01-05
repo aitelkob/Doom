@@ -6,11 +6,11 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:13:36 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 11:11:02 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/03 12:01:44 by yoouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "../../includes/headers.h"
 
 void		update(t_doom *d)
 {
