@@ -6,7 +6,7 @@
 #    By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/03 17:12:10 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/05 14:29:14 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ RM              = rm -rf
 SDL             = libSDL2.a
 TTF             = libsdl2_ttf.a
 IMG				= libSDL2_image.a
+MIX				= libSDL2_mixer.a
 FT              = libft.a
 LFTDIR			= libft
 NAME            = Doom 
@@ -70,12 +71,14 @@ SRC				+= setup/load_tex.c
 UNAME := $(shell uname -s)
 
 ifeq ($(UNAME), Darwin)
-	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.12_1/lib
+	LSDLDIR     = $(HOME)/.brew/Cellar/sdl2/2.0.14_1/lib
 	LTTFDIR     = $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
 	LIMGDIR 	= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/lib
-	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.12_1/include/SDL2
+	MIXRDIR		= $(HOME)/.brew/Cellar/sdl2_mixer/2.0.4/lib
+	INCSDIR     += $(HOME)/.brew/Cellar/sdl2/2.0.14_1/include/SDL2
 	INCSDIR     += $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 	INCSDIR		+= $(HOME)/.brew/Cellar/sdl2_image/2.0.5/include/SDL2
+	INCSDIR		+= $(HOME)/.brew/Cellar/sdl2_mixer/2.0.4/include/SDL2
 else
 	SDL       = libSDL2.a
 	TTF       = libSDL2_ttf.a
@@ -91,6 +94,7 @@ endif
 LIBS			:= -L$(LSDLDIR) -lSDL2
 LIBS			+= -L$(LTTFDIR) -lSDL2_ttf
 LIBS			+= -L$(LIMGDIR) -lSDL2_image
+LIBS			+= -L$(MIXRDIR) -lSDL2_mixer
 LIBS			+= -L$(LFTDIR) -lft
 LIBS			+= -lm
 LIBS			+= -lz
@@ -99,6 +103,7 @@ LFT				= $(LFTDIR)/$(FT)
 LSDL			= $(LSDLDIR)/$(SDL)
 LTTF			= $(LTTFDIR)/$(TTF)
 LIMG			= $(LIMGDIR)/$(IMG)
+LMIXR			= $(MIXRDIR)/$(MIX)
 D_SRCS           = $(addsuffix /, $(SRCSDIR))
 DI_SRCS			 = $(foreach dir,$(CHILDDIR),$(D_SRCS)$(dir))
 D_OBJS           = $(addsuffix /, $(OBJSDIR))
@@ -119,7 +124,7 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 all: $(OBJSDIR) $(C_CHILDDIR) $(NAME)
 
 
-$(NAME):  $(LFT)  $(LSDL) $(LIMG) $(LTTF)  $(C_OBJS)
+$(NAME):  $(LFT)  $(LSDL) $(LIMG) $(LTTF) $(LMIXR)  $(C_OBJS)
 	@echo "$(RED)\n***********>>>Building : $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 
@@ -133,12 +138,7 @@ $(LFT):
 ### creating files for object.o
 $(LSDL):
 	@echo "$(GREEN)***   Installing library sdl2   ...  ***\n$(RESET)"
-	@if [$(UNAME) = Darwin]; then
-	brew install sdl2 > /dev/null 2>&1;
-	elif [! -d "$(SDL)"]; then
-	sudo apt install libsdl2-dev libsdl2-2.0-0 -y;
-	fi
-
+	@brew install sdl2 > /dev/null 2>&1;
 
 $(LTTF):
 	@echo "$(GREEN)***   Installing library sdl2_ttf   ...  ***\n$(RESET)"
@@ -147,6 +147,10 @@ $(LTTF):
 $(LIMG):
 	@echo "$(GREEN)***   Installing library sdl2_image    ...  ***\n$(RESET)"
 	@brew install sdl2_image > /dev/null 2>&1;
+$(LMIXR):
+	@echo "$(GREEN)***   Installing library sdl2_mixer    ...  ***\n$(RESET)"
+	@brew install sdl2_mixer > /dev/null 2>&1;
+
 $(OBJSDIR):
 	@mkdir -p $(OBJSDIR)
 

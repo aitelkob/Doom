@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:09:02 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2020/12/31 16:08:08 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:26:58 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "SDL.h"
 # include "SDL_ttf.h"
 # include "SDL_image.h"
+# include "SDL_mixer.h"
 #include "structers.h"
 #include "../srcs/algebr_lin/alg.h"
 #include "setup.h"
