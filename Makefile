@@ -6,7 +6,7 @@
 #    By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/03 11:25:06 by yoouali          ###   ########.fr        #
+#    Updated: 2021/01/05 18:03:38 by ayagoumi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ CHILDDIR		+= algebr_lin
 CHILDDIR        += render
 CHILDDIR        += setup
 CHILDDIR        += update
+CHILDDIR        += door
 ###########################
 INCS            := includes/setup.h
 INCS            += includes/render.h
@@ -53,6 +54,7 @@ INCS            += includes/process_input.h
 INCS            += includes/headers.h
 INCS            += includes/define.h
 INCS            += includes/structers.h
+INCS            += includes/door.h
 INCS            += includes/update.h
 INCS			+= srcs/algebr_lin/alg.h
 ############################################
@@ -65,6 +67,7 @@ SRC             += update/main_update.c
 SRC             += update/main_input.c
 SRC             += update/find_intersection.c
 SRC             += render/draw_2Dmap.c
+SRC             += door/door.c
 
 #############################################
 UNAME := $(shell uname -s)

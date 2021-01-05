@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_intersection.c                                :+:      :+:    :+:   */
+/*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 08:07:46 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/05 18:08:38 by ayagoumi         ###   ########.fr       */
+/*   Created: 2021/01/05 17:36:42 by ayagoumi          #+#    #+#             */
+/*   Updated: 2021/01/05 18:05:10 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/headers.h"
+#include "../../includes/door.h"
 
 extern int map[];
 
-void			hori_intersection(t_player *p, t_hit *hori, double ra)
+void			hori_intersection_door(t_player *p, t_hit *hori, double ra)
 {
 	int mx, my, mp, dof;
 	float rx, ry, x0, y0;
@@ -47,14 +47,12 @@ void			hori_intersection(t_player *p, t_hit *hori, double ra)
 		mx = (int)(rx) >> 6;
 		my = (int)(ry) >> 6;
 		mp = my * 14 + mx;
-		if (mp < 196 && mp > 0 && map[mp] == 1)
-			break;
 		if (mp < 196 && mp > 0 && map[mp] == 5)
-		{
-			rx += x0/2;
+        {
+            rx += x0/2;
 			ry += y0/2;
 			break;
-		}
+        }
 		else
 		{
 			rx += x0;
@@ -67,7 +65,7 @@ void			hori_intersection(t_player *p, t_hit *hori, double ra)
 	hori->p.y = ry;
 }
 
-void		vert_intersection(t_player *p, t_hit *vert, double ra)
+void		vert_intersection_door(t_player *p, t_hit *vert, double ra)
 {
 	int mx, my, mp, dof;
 	float rx, ry, x0, y0;
@@ -100,10 +98,8 @@ void		vert_intersection(t_player *p, t_hit *vert, double ra)
 		mx = (int)(rx) >> 6;
 		my = (int)(ry) >> 6;
 		mp = my * 14 + mx;
-		if (mp < 196 && mp > 0 && map[mp] == 1)
-			break;
 		if (mp < 196 && mp > 0 && map[mp] == 5)
-		{
+        {
 			rx += x0/2;
 			ry += y0/2;
 			break;
@@ -118,59 +114,4 @@ void		vert_intersection(t_player *p, t_hit *vert, double ra)
 	vert->dist = sqrt((rx - p->pos.x) * (rx - p->pos.x) + (ry - p->pos.y) * (ry - p->pos.y));
 	vert->p.x = rx;
 	vert->p.y = ry;
-}
-
-t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
-{
-	int		r;
-	double	ra;
-	t_hit	vert;
-	t_hit	hori;
-	int		line_h;
-	int		line_o;
-	double	dist;
-	double 	ca;
-	double	inc;
-
-	r = 0;
-	ra = p->pa - 30 * DR;
-	if (ra < 0)
-		ra += 2 * PI;
-	if (ra > 2 * PI)
-		ra -= 2 * PI;
-	inc = 60 * DR / W;
-	while (r < W)
-	{
-		vert_intersection(p, &vert, ra);
-		hori_intersection(p, &hori, ra);
-		// shoot rays from the player
-		if (vert.dist < hori.dist)
-		{
-			dist = vert.dist;
-			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, vert.p.x, vert.p.y);
-		}
-		else
-		{
-			dist = hori.dist;
-			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, hori.p.x, hori.p.y);
-		}
-		// // 3d walls rendering
-		ca = p->pa - ra;
-		if (ca < 0)
-			ca += 2 * PI;
-		if (ca > 2 * PI)
-			ca -= 2 * PI;
-		line_h = (BLOCK_SIZE * H) / (dist * cos(ca));
-		if (line_h >= H)
-			line_h = H - 1;
-		line_o = H / 2 - line_h / 2;
-		SDL_RenderDrawLine(sdl->ren_ptr, r + W, line_o, r + W, line_o + line_h);
-		ra += inc;
-		r++;
-		if (ra < 0)
-			ra += 2 * PI;
-		if (ra > 2 * PI)
-			ra -= 2 * PI;
-	}
-	return (vert);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   headers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayagoumi <ayagoumi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:09:02 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 11:22:49 by yoouali          ###   ########.fr       */
+/*   Updated: 2021/01/05 18:00:45 by ayagoumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@
 #include "process_input.h"
 #include "update.h"
 #include "render.h"
+#include "door.h"
 #endif
