@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:02:07 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 11:11:16 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:32:08 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void				draw_minimap(t_doom *d)
 	srcrect.y = d->player.pos.y - 5;
 	SDL_SetRenderDrawColor(d->sdl.ren_ptr, 55, 20, 200, 0);
 	SDL_RenderFillRect(d->sdl.ren_ptr, &srcrect);
+	raycasting(d);
 }

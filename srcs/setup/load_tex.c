@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_tex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 16:08:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/03 17:13:04 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/06 08:28:48 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void		load_texture(t_doom *d)
 		printf("IMG_Load Floor: %s\n", IMG_GetError());
 		exit(0);
 	}
-
-	d->sdl.Wall_pixels = (unsigned int *)d->sdl.Wall;
-	d->sdl.Sky_pixels = (unsigned int *)d->sdl.Sky;
-	d->sdl.Floor_pixels = (unsigned int *)d->sdl.Floor;
+	d->sdl.Wall_pixels = (unsigned int *)d->sdl.Wall->pixels;
+	d->sdl.Sky_pixels = (unsigned int *)d->sdl.Sky->pixels;
+	d->sdl.Floor_pixels = (unsigned int *)d->sdl.Floor->pixels;
 }

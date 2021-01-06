@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: farwila <farwila@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:52:53 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 17:11:23 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:00:09 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void			init_player(t_player *p)
 	p->pos.x = 500;
 	p->pos.y = 500;
 	p->pa = 0;
+	p->fov = 60;
 	p->delta.x = cos(p->pa) * 5;
 	p->delta.y = sin(p->pa) * 5;
 }

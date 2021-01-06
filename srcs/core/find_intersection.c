@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 08:07:46 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 10:56:43 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:20:49 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,148 +16,104 @@ extern int map[];
 
 void			hori_intersection(t_player *p, t_hit *hori, double ra)
 {
-	int mx, my, mp, dof;
-	float rx, ry, x0, y0;
-	float aatan;
+	t_inter	t;
 
-	dof = 0;
-	aatan = -1 / tan(ra);
+	t.i = 0;
+	t.a_tan = -1 / tan(ra);
 	if (ra > PI)
 	{
-		ry = (((int)p->pos.y >> 6) << 6) - 0.0001;
-		rx = (p->pos.y - ry) * aatan + p->pos.x;
-		y0 = -64;
-		x0 = -y0 * aatan;
+		t.delta_y = (((int)p->pos.y >> 6) << 6) - 0.0001;
+		t.delta_x = (p->pos.y - t.delta_y) * t.a_tan + p->pos.x;
+		t.step_y = -64;
+		t.step_x = -t.step_y * t.a_tan;
 	}
 	if (ra < PI)
 	{
-		ry = (((int)p->pos.y >> 6) << 6) + 64;
-		rx = (p->pos.y - ry) * aatan + p->pos.x;
-		y0 = 64;
-		x0 = -y0 * aatan;
+		t.delta_y = (((int)p->pos.y >> 6) << 6) + 64;
+		t.delta_x = (p->pos.y - t.delta_y) * t.a_tan + p->pos.x;
+		t.step_y = 64;
+		t.step_x = -t.step_y * t.a_tan;
 	}
 	if (ra == 0 || ra == PI)
 	{
-		rx = p->pos.x;
-		ry = p->pos.y;
-		dof = 14;
+		t.delta_x = p->pos.x;
+		t.delta_y = p->pos.y;
+		t.i = 14;
 	}
-	while (dof < 14)
+	while (t.i < 14)
 	{
-		mx = (int)(rx) >> 6;
-		my = (int)(ry) >> 6;
-		mp = my * 14 + mx;
-		if (mp < 196 && mp > 0 && map[mp] == 1)
+		t.mx = (int)(t.delta_x) >> 6;
+		t.my = (int)(t.delta_y) >> 6;
+		t.mp = t.my * 14 + t.mx;
+		if (t.mp < 196 && t.mp > 0 && map[t.mp])
 			break;
 		else
 		{
-			rx += x0;
-			ry += y0;
-			dof++;
+			t.delta_x += t.step_x;
+			t.delta_y += t.step_y;
+			t.i++;
 		}
 	}
-	hori->dist = sqrt((rx - p->pos.x) * (rx - p->pos.x) + (ry - p->pos.y) * (ry - p->pos.y));
-	hori->p.x = rx;
-	hori->p.y = ry;
+	hori->dist = sqrt((t.delta_x - p->pos.x) * (t.delta_x - p->pos.x) + (t.delta_y - p->pos.y) * (t.delta_y - p->pos.y));
+	hori->p.x = t.delta_x;
+	hori->p.y = t.delta_y;
+	hori->map_xy = t.mp;
 }
 
 void		vert_intersection(t_player *p, t_hit *vert, double ra)
 {
-	int mx, my, mp, dof;
-	float rx, ry, x0, y0;
-	float aatan;
+	t_inter		t;
 
-	dof = 0;
-	aatan = -tan(ra);
+	t.i = 0;
+	t.a_tan = -tan(ra);
 	if (ra > P2 && ra < P3)
 	{
-		rx = (((int)p->pos.x >> 6) << 6) - 0.0001;
-		ry = (p->pos.x - rx) * aatan + p->pos.y;
-		x0 = -64;
-		y0 = -x0 * aatan;
+		t.delta_x = (((int)p->pos.x >> 6) << 6) - 0.0001;
+		t.delta_y = (p->pos.x - t.delta_x) * t.a_tan + p->pos.y;
+		t.step_x = -64;
+		t.step_y = -t.step_x * t.a_tan;
 	}
 	if (ra < P2 || ra > P3)
 	{
-		rx = (((int)p->pos.x >> 6) << 6) + 64;
-		ry = (p->pos.x - rx) * aatan + p->pos.y;
-		x0 = 64;
-		y0 = -x0 * aatan;
+		t.delta_x = (((int)p->pos.x >> 6) << 6) + 64;
+		t.delta_y = (p->pos.x - t.delta_x) * t.a_tan + p->pos.y;
+		t.step_x = 64;
+		t.step_y = -t.step_x * t.a_tan;
 	}
 	if (ra == 0 || ra == PI)
 	{
-		rx = p->pos.x;
-		ry = p->pos.y;
-		dof = 14;
+		t.delta_x = p->pos.x;
+		t.delta_y = p->pos.y;
+		t.i = 14;
 	}
-	while (dof < 14)
+	while (t.i < 14)
 	{
-		mx = (int)(rx) >> 6;
-		my = (int)(ry) >> 6;
-		mp = my * 14 + mx;
-		if (mp < 196 && mp > 0 && map[mp] == 1)
+		t.mx = (int)(t.delta_x) >> 6;
+		t.my = (int)(t.delta_y) >> 6;
+		t.mp = t.my * 14 + t.mx;
+		if (t.mp < 196 && t.mp > 0 && map[t.mp])
 			break;
 		else
 		{
-			rx += x0;
-			ry += y0;
-			dof++;
+			t.delta_x += t.step_x;
+			t.delta_y += t.step_y;
+			t.i++;
 		}
 	}
-	vert->dist = sqrt((rx - p->pos.x) * (rx - p->pos.x) + (ry - p->pos.y) * (ry - p->pos.y));
-	vert->p.x = rx;
-	vert->p.y = ry;
+	vert->dist = sqrt((t.delta_x - p->pos.x) * (t.delta_x - p->pos.x) + (t.delta_y - p->pos.y) * (t.delta_y - p->pos.y));
+	vert->p.x = t.delta_x;
+	vert->map_xy = t.mp;
+	vert->p.y = t.delta_y;
 }
 
-t_hit			find_intersection_point(t_player *p, t_sdl *sdl)
+t_hit			find_intersection_point(t_player *p, double ra)
 {
-	int		r;
-	double	ra;
 	t_hit	vert;
 	t_hit	hori;
-	int		line_h;
-	int		line_o;
-	double	dist;
-	double 	ca;
-	double	inc;
 
-	r = 0;
-	ra = p->pa - 30 * DR;
-	if (ra < 0)
-		ra += 2 * PI;
-	if (ra > 2 * PI)
-		ra -= 2 * PI;
-	inc = 60 * DR / W;
-	while (r < W)
-	{
-		vert_intersection(p, &vert, ra);
-		hori_intersection(p, &hori, ra);
-		if (vert.dist < hori.dist)
-		{
-			dist = vert.dist;
-			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, vert.p.x, vert.p.y);
-		}
-		else
-		{
-			dist = hori.dist;
-			SDL_RenderDrawLine(sdl->ren_ptr, p->pos.x, p->pos.y, hori.p.x, hori.p.y);
-		}
-		// 3d walls rendering
-		ca = p->pa - ra;
-		if (ca < 0)
-			ca += 2 * PI;
-		if (ca > 2 * PI)
-			ca -= 2 * PI;
-		line_h = (BLOCK_SIZE * H) / (dist * cos(ca));
-		if (line_h >= H)
-			line_h = H - 1;
-		line_o = H / 2 - line_h / 2;
-		SDL_RenderDrawLine(sdl->ren_ptr, r + W, line_o, r + W, line_o + line_h);
-		ra += inc;
-		r++;
-		if (ra < 0)
-			ra += 2 * PI;
-		if (ra > 2 * PI)
-			ra -= 2 * PI;
-	}
-	return (vert);
+	vert_intersection(p, &vert, ra);
+	hori_intersection(p, &hori, ra);
+	if (vert.dist < hori.dist)
+		return (vert);
+	return (hori);
 }

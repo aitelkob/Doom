@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:11:47 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/03 16:05:57 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:14:50 by aeddaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ typedef struct		s_vec3
 }					t_vect3;
 
 typedef t_vect3 	t_point;
-
-typedef	struct		s_tex
-{
-
-}					t_tex;
 
 typedef struct		s_input
 {
@@ -70,12 +65,37 @@ typedef struct		s_player
 }					t_player;
 
 
+typedef struct		s_inter
+{
+	int			i;
+	int			mx;
+	int			my;
+	int			mp;
+	double		step_x;
+	double		step_y;
+	double		delta_x;
+	double		delta_y;
+	double		a_tan;
+}					t_inter;
+
+
 typedef struct		s_hit
 {
 	t_point		p;
+	int			map_xy;
 	double		dist;
 }					t_hit;
 
+typedef struct		s_raycasting
+{
+	double			ray_angle;
+	double			angle_d;
+	double			inc;
+	int				x;
+	int				line_h;
+	int				line_o;
+	t_hit			hit;
+}					t_raycasting;
 
 typedef struct		s_render
 {

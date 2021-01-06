@@ -6,7 +6,7 @@
 #    By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 10:38:14 by ayagoumi          #+#    #+#              #
-#    Updated: 2021/01/05 14:29:14 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/06 09:22:28 by aeddaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ INCS			+= srcs/algebr_lin/alg.h
 ############################################
 SRC             := core/main.c
 SRC             += core/find_intersection.c
+SRC             += core/raycasting.c
 SRC             += algebr_lin/vect3_utilfun.c
 SRC             += algebr_lin/vect3_utilfunc.c
 SRC             += render/main_render.c
