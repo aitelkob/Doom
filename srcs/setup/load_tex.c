@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "../../includes/headers.h"
 
 void		load_texture(t_doom *d)
 {

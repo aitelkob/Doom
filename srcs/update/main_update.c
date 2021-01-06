@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "../../includes/headers.h"
 
 void		update(t_doom *d)
 {

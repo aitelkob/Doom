@@ -84,11 +84,13 @@ else
 	SDL       = libSDL2.a
 	TTF       = libSDL2_ttf.a
 	IMG       = libSDL2_image.a
+	MIX       = libSDL2_mixer.a
 	LULIBS    = /usr/lib/x86_64-linux-gnu/
 	LUINCS    = /usr/include/
 	LTTFDIR	  = $(LULIBS)
 	LSDLDIR	  = $(LULIBS)
 	LIMGDIR	  = $(LULIBS)
+	MIXRDIR   = $(LULIBS)
 	INCSDIR	  = $(LUINCS)/SDL2 
 endif
 ########################################3Linked libraries at compile time.

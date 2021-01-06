@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "../../includes/headers.h"
 
 static void			handle_keys(t_update *d)
 {
