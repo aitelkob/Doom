@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:40:21 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/04 15:16:46 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/09 11:14:32 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WALL  "resources/frame.png"
 # define FLOOR "resources/bark.png"
 # define SKY   "resources/sky1.png"
-
+# define TEST "resources/test.png"
 
 #define W 896
 #define H 896

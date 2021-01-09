@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:11:47 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/06 09:14:50 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/09 09:52:02 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_sdl
 	SDL_Surface		*Wall;
 	SDL_Surface		*Sky;
 	SDL_Surface		*Floor;
+	SDL_Texture		*test;
 	unsigned int	*Wall_pixels;
 	unsigned int	*Sky_pixels;
 	unsigned int	*Floor_pixels;

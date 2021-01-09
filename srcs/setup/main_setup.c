@@ -6,7 +6,7 @@
 /*   By: aeddaqqa <aeddaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:52:53 by aeddaqqa          #+#    #+#             */
-/*   Updated: 2021/01/06 09:00:09 by aeddaqqa         ###   ########.fr       */
+/*   Updated: 2021/01/09 12:16:29 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void			init_sdl(t_sdl *sdl)
 	SDL_WINDOWPOS_CENTERED,
 	W * 2, H, SDL_WINDOW_SHOWN);
 	sdl->ren_ptr = SDL_CreateRenderer(sdl->win_ptr, -1, 0);
-	sdl->tex_ptr = SDL_CreateTexture(sdl->ren_ptr, SDL_PIXELFORMAT_ARGB8888,
-	SDL_TEXTUREACCESS_STREAMING, W, H);
+	sdl->tex_ptr = SDL_CreateTexture(sdl->ren_ptr,SDL_PIXELFORMAT_ARGB8888 
+	,SDL_TEXTUREACCESS_STREAMING, W, H);
 }
 
 static void			init_player(t_player *p)
